@@ -10,3 +10,9 @@ jobs:
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
+      - run:  echo "hello world" > test.txt
+      - uses: actions/upload-artifact@v2
+        with:
+         name: my-artifact
+         path: test.txt
+         

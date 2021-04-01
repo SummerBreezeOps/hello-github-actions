@@ -10,16 +10,18 @@ jobs:
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
-      - run:  echo "hello world" > test.txt
-      - uses: actions/upload-artifact@v2
-        with:
-         name: my-artifact
-         path: test.txt
+      - run:  |
+          echo "hello world" > test.txt
+          echo "actions github" > test1.txt
+      #- uses: actions/upload-artifact@v2
+      #  with:
+      #   name: my-artifact
+      #   path: test.txt
          
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: test.txt
+          file: test.txt, test1.txt
           tag: ${{ github.ref }}
-          asset_name: test.txt
+    
